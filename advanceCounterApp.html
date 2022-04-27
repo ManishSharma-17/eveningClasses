@@ -7,16 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CUSTOM-CSS-FILE-LINK -->
     <link rel="stylesheet" href="./assets/css/style.css">
-    <title>Only-JS</title>
+    <title>Advance Counter App</title>
 </head>
 
 <body>
     <section class="min_vh_100 d_flex align_items_center justify_content_center">
         <div class="text_center mw_460">
-            <h1 class="mb_5 fs_1 fw_normal black_400">Counter app</h1>
-            <div class="shadow_1">
+            <h1 class="mb_5 fs_1 fw_normal black_400">Advance Counter app</h1>
+            <div class="shadow_1 p_4">
                 <p class="py_5 fs_1" id="addNum">0</p>
-                <button type="submit" id="add_value" class="mb_5 btn button_filled color_white">Add One</button>
+                <div class="mb_5">
+                    <button type="submit" id="add_value" class=" btn button_outlined">Add
+                        One</button>
+                    <button type="submit" id="save_value" class="  btn button_filled color_white">Save</button>
+                </div>
+                <p class="mb_3 black_400">Previous values</p>
+                <p id="store_value">null :(</p>
             </div>
         </div>
     </section>
