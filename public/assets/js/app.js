@@ -25,19 +25,18 @@ saveValue.addEventListener("click", function () {
     if (adding.innerHTML == 0) {
         alert("can't able to add zero value !")
         return;
-    }
+    };
+
     // if (storeValue.innerHTML == "null :(") {
     //     storeValue.innerHTML = adding.innerHTML;
     //     adding.innerHTML = 0;
-    //     console.log("hello");
     //     return;
-    // }
+    // };
     // if (storeValue.innerHTML = adding.innerHTML) {
     //     storeValue.innerHTML += ", " + adding.innerHTML;
     //     adding.innerHTML = 0;
-    //     console.log("uhi")
     //     return;
-    // }
+    // };
 
     switch (storeValue.innerHTML) {
         case "null :(":

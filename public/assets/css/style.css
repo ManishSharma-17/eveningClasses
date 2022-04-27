@@ -71,6 +71,10 @@ body {
     padding-bottom: 2rem;
 }
 
+.p_2 {
+    padding: .5rem;
+}
+
 .p_4 {
     padding: 1.5rem;
 }
@@ -104,8 +108,23 @@ body {
 }
 
 .mw_460 {
-    max-width: 460px;
     width: 90%;
+    max-width: 460px;
+}
+
+.w_100 {
+    width: 100%;
+}
+
+.inputField:focus {
+    outline: none;
+}
+
+.inputField {
+    padding: 1.25em;
+    font-size: var(--fs_2);
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .shadow_1 {
@@ -165,6 +184,17 @@ body {
 
 .coloe_primary {
     color: var(--light_blue);
+}
+
+.text_left {
+    text-align-last: left;
+}
+
+.result_box {
+    background: #FAFAFA;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    border-radius: 5px;
 }
 
 @media (max-width:576px) {

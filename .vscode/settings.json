@@ -2,5 +2,6 @@
     "editor.defaultFormatter": "HookyQR.beautify",
     "editor.formatOnType": true,
     "editor.formatOnSave": true,
-    "editor.formatOnPaste": true
+    "editor.formatOnPaste": true,
+    "liveServer.settings.port": 5501
 }
