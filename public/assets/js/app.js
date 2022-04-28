@@ -14,9 +14,20 @@ const addValue = document.querySelector("#add_value");
 const adding = document.querySelector("#addNum");
 const saveValue = document.querySelector("#save_value");
 const storeValue = document.querySelector("#store_value");
+const cut = document.querySelector("#cut");
+// const calcArea = document.querySelector("#calcArea");
+// const additionSign = document.querySelector("#addition_sign");
 
 addValue.addEventListener("click", function () {
     adding.innerHTML = 1 + adding.innerHTML * 1;
+});
+
+cut.addEventListener("click", function () {
+    if (adding.innerHTML == 0) {
+        alert("You don't have value to reduce !")
+        return;
+    };
+    adding.innerHTML = +adding.innerHTML - 1;
 });
 
 saveValue.addEventListener("click", function () {
@@ -51,6 +62,10 @@ saveValue.addEventListener("click", function () {
     }
 
 });
+
+// additionSign.addEventListener("click", function () {
+//     calcArea.innerHTML = "hello";
+// })
 
 console.log(adding.innerHTML);
 

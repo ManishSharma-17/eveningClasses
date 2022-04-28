@@ -26,7 +26,7 @@
 
 body {
     background: #F7F7F7;
-    background: black;
+    /* background: black; */
 }
 
 .container {
@@ -48,6 +48,10 @@ body {
 
 .justify_content_center {
     justify-content: center;
+}
+
+.justify_content_between {
+    justify-content: space-between;
 }
 
 .align_items_center {
@@ -91,6 +95,10 @@ body {
     margin-bottom: 1rem;
 }
 
+.mb_1 {
+    margin-bottom: 4px;
+}
+
 .fs_1 {
     font-size: var(--fs_1);
 }
@@ -116,6 +124,14 @@ body {
     width: 100%;
 }
 
+.position_absolute {
+    position: absolute;
+}
+
+.position_relative {
+    position: relative;
+}
+
 .inputField:focus {
     outline: none;
 }
@@ -133,7 +149,8 @@ body {
     border-radius: 20px;
 }
 
-.btn {
+.btn,
+.calc_btn {
     border-radius: 4px;
     padding: 0.75em 1.5em;
     min-width: 140px;
@@ -144,7 +161,13 @@ body {
     transition: all 30ms linear;
 }
 
-.btn:hover {
+.calc_btn {
+    min-width: unset;
+}
+
+.btn:hover,
+.calc_btn:hover,
+.retake_icon:hover {
     transform: scale(1.05);
 }
 
@@ -190,11 +213,39 @@ body {
     text-align-last: left;
 }
 
+.retake_icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: .6em;
+    top: 12px;
+    right: 12px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.584);
+}
+
+/* .back_icon {
+    width: 40px;
+    height: 40px
+} */
+
 .result_box {
     background: #FAFAFA;
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
     border-radius: 5px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input.inputField::-webkit-outer-spin-button,
+input.inputField::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input.inputField[type=number] {
+    -moz-appearance: textfield;
 }
 
 @media (max-width:576px) {

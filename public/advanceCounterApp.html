@@ -14,7 +14,16 @@
     <section class="min_vh_100 d_flex align_items_center justify_content_center">
         <div class="text_center mw_460">
             <h1 class="mb_5 fs_1 fw_normal black_400">Advance Counter app</h1>
-            <div class="shadow_1 p_4">
+            <div class="shadow_1 p_4 position_relative">
+                <span id="cut" class="position_absolute retake_icon d_flex justify_content_center align_items_center">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 5L3 10L8 15" stroke="black" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M3 10H11C16.523 10 21 14.477 21 20V21" stroke="black" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <!-- <img src="./assets/images/icons/akar-icons_arrow-back.svg " alt="retake back" class="back_icon"> -->
+                </span>
                 <p class="py_5 fs_1" id="addNum">0</p>
                 <div class="mb_5">
                     <button type="submit" id="add_value" class=" btn button_outlined">Add
