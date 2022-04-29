@@ -7,7 +7,7 @@
     box-sizing: border-box;
     text-decoration: none;
     font-family: 'Inter';
-    transition: all 200ms ease-in-out;
+    transition: all 150ms linear !important;
     scroll-behavior: smooth;
 }
 
@@ -32,6 +32,35 @@ body {
 .container {
     max-width: 1320px;
     margin: 0 auto;
+}
+
+.whiteSpace_nowrap {
+    white-space: nowrap;
+}
+
+.overflow_auto {
+    overflow: auto;
+}
+
+::-webkit-scrollbar {
+    background: transparent;
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: blue;
+    border-radius: 3px;
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-button {
+    background: rgb(142, 142, 233);
+    border-radius: 3px;
+    width: 15px;
+    height: 5px;
+    cursor: pointer;
 }
 
 .min_vh_100 {

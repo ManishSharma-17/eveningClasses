@@ -16,18 +16,22 @@
             <h1 class="mb_5 fs_1 fw_normal black_400">Simple Calculator</h1>
             <div class="shadow_1 p_4">
                 <div class="result_box text_left p_2 mb_1">
-                    <p class="mb_3 black_400" id="calcArea">2+5</p>
-                    <p class="fs_1 text_center">7</p>
+                    <p class="mb_3 black_400 whiteSpace_nowrap overflow_auto" id="calcArea">2+5</p>
+                    <p class="fs_1 text_center whiteSpace_nowrap overflow_auto" id="total_output">7</p>
                 </div>
-                <input type="number" placeholder="Enter first value" class="w_100 inputField mb_1">
-                <input type="number" placeholder="Enter second value" class="w_100 inputField mb_3">
+                <!-- FIRST INPUT -->
+                <input type="number" id="firstValue" placeholder="Enter first value" class="w_100 inputField mb_1">
+                <!-- SECOND INPUT -->
+                <input type="number" id="secondValue" placeholder="Enter second value" class="w_100 inputField mb_3">
+                <!-- BUTTONS -->
                 <div class="mb_5 d_flex justify_content_between">
                     <button type="submit" id="addition_sign" class="calc_btn button_outlined">+</button>
                     <button type="submit" id="subtraction_sign" class="calc_btn button_outlined">-</button>
                     <button type="submit" id="multipy_sign" class="calc_btn button_outlined">*</button>
                     <button type="submit" id="devision_sign" class="calc_btn button_outlined">/</button>
-                    <button type="submit" id="clear_value" class="btn button_filled color_white">Clear</button>
+                    <button type="reset" id="clear_value" class="btn button_filled color_white">Clear</button>
                 </div>
+
             </div>
         </div>
     </section>
@@ -35,35 +39,79 @@
     <!-- CUSTOM-JS-FILE-LINK -->
     <!-- <script src="./assets/js/app.js"></script> -->
     <script>
-        // const addValue = document.querySelector("#add_value");
-        // const adding = document.querySelector("#addNum");
-        // const saveValue = document.querySelector("#save_value");
-        // const storeValue = document.querySelector("#store_value");
-        // const cut = document.querySelector("#cut");
+        // STEPS FOR SIMPLE CALCULATOR:-
+        // 1. first get the all buttons and signs 
+        // 2. get all inputs  
+        // 3. get the expertion area  
+        // 4. also get the total area  
+        // 5. create onclick functions on buttons to play certian tasks
+        // 6. also create event listener on input feild to store value in expertion area
+        // 7. create another funtion to do arithmetic tasks
+
         const calcArea = document.querySelector("#calcArea");
+        const total = document.querySelector("#total_output");
         const additionSign = document.querySelector("#addition_sign");
         const subtractionSign = document.querySelector("#subtraction_sign");
         const multipySign = document.querySelector("#multipy_sign");
         const devisionSign = document.querySelector("#devision_sign");
         const clearValue = document.querySelector("#clear_value");
-        const inputs = document.querySelector("[input='number']");
-        console.log(inputs)
+        const firstValue = document.querySelector("#firstValue");
+        const secondValue = document.querySelector("#secondValue");
 
         additionSign.addEventListener("click", function () {
-            calcArea.innerHTML = "+";
-        })
+            total.innerHTML = +firstValue.value + +secondValue.value;
+            calcArea.innerHTML = firstValue.value + " + " + secondValue.value;
+            if (firstValue.value == "" && secondValue.value == "") {
+                calcArea.innerHTML = 0 + "+";
+                alert("please put some values in input feilds !");
+                return;
+            };
+
+        });
+
         subtractionSign.addEventListener("click", function () {
-            calcArea.innerHTML = "-";
-        })
+            total.innerHTML = +firstValue.value - +secondValue.value;
+            calcArea.innerHTML = firstValue.value + " - " + secondValue.value;
+            if (firstValue.value == "" && secondValue.value == "") {
+                calcArea.innerHTML = 0 + "-";
+                alert("please put some values in input feilds !");
+                return;
+            };
+        });
+
         multipySign.addEventListener("click", function () {
-            calcArea.innerHTML = "*";
-        })
+            total.innerHTML = +firstValue.value * +secondValue.value;
+            calcArea.innerHTML = firstValue.value + " * " + secondValue.value;
+            if (firstValue.value == "" && secondValue.value == "") {
+                calcArea.innerHTML = 0 + "*";
+                alert("please put some values in input feilds !");
+                return;
+            };
+
+        });
+
         devisionSign.addEventListener("click", function () {
-            calcArea.innerHTML = "/";
-        })
+            if (firstValue.value == "" && secondValue.value == "") {
+                calcArea.innerHTML = 0 + "/";
+                total.innerHTML = 0;
+                alert("please put some values in input feilds !");
+                return;
+            };
+            total.innerHTML = +firstValue.value / +secondValue.value;
+            calcArea.innerHTML = firstValue.value + " / " + secondValue.value;
+        });
+
         clearValue.addEventListener("click", function () {
-            calcArea.innerHTML = 0;
-        })
+
+            calcArea.innerHTML = " ";
+            document.querySelectorAll("input").value = "";
+
+            total.innerHTML = " ";
+            // calcArea.innerHTML = "";
+
+            firstValue.value = "";
+            secondValue.value = "";
+        });
     </script>
 </body>
 
