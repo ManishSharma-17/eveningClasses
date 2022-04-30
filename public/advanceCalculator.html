@@ -7,31 +7,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CUSTOM-CSS-FILE-LINK -->
     <link rel="stylesheet" href="./assets/css/style.css">
-    <title>Simple Calculator</title>
+    <title>Advance Counter </title>
 </head>
 
 <body>
     <section class="min_vh_100 d_flex align_items_center justify_content_center">
-        <div class="text_center mw_460">
-            <h1 class="mb_5 fs_1 fw_normal black_400">Simple Calculator</h1>
-            <div class="shadow_1 p_4">
-                <div class="result_box text_left p_2 mb_1">
+        <div class="text_center mw_540">
+            <h1 class="mb_5 fs_1 fw_normal black_400">Advance Calculator</h1>
+            <div class="shadow_1 p_5">
+                <div class="result_box text_left p_2 mb_2">
                     <p class="mb_3 black_400 whiteSpace_nowrap overflow_auto" id="calcArea">2+5</p>
                     <p class="fs_1 text_center whiteSpace_nowrap overflow_auto" id="total_output">7</p>
+                    <!-- <p class="mb_3 black_400 whiteSpace_nowrap overflow_auto" id="calcArea">7+8</p>
+                    <p class="fs_1 text_center whiteSpace_nowrap overflow_auto" id="total_output">15</p> -->
                 </div>
                 <!-- FIRST INPUT -->
-                <input type="number" id="firstValue" placeholder="Enter first value" class="w_100 inputField mb_1">
+                <input type="number" id="firstValue" placeholder="Enter first value"
+                    class="w_100 inputField mb_1 d_none">
                 <!-- SECOND INPUT -->
-                <input type="number" id="secondValue" placeholder="Enter second value" class="w_100 inputField mb_3">
+                <input type="number" id="secondValue" placeholder="Enter second value"
+                    class="w_100 inputField mb_3 d_none">
                 <!-- BUTTONS -->
-                <div class="mb_5 d_flex justify_content_between">
+                <div class="mb_5 d_flex justify_content_between d_none">
                     <button type="submit" id="addition_sign" class="calc_btn button_outlined">+</button>
                     <button type="submit" id="subtraction_sign" class="calc_btn button_outlined">-</button>
                     <button type="submit" id="multipy_sign" class="calc_btn button_outlined">*</button>
                     <button type="submit" id="devision_sign" class="calc_btn button_outlined">/</button>
                     <button type="reset" id="clear_value" class="btn button_filled color_white">Clear</button>
                 </div>
-
+                <div class="d_grid">
+                    <div class="g_item1 g_items"><button type="submit">7</button></div>
+                    <div class="g_item2 g_items"><button type="submit">8</button></div>
+                    <div class="g_item3 g_items"><button type="submit">9</button></div>
+                    <div class="g_item4 g_items"><button type="submit">+</button></div>
+                    <div class="g_item5 g_items"><button type="submit">^</button></div>
+                    <div class="g_item6 g_items"><button type="submit"><img src="./assets/images/icons/cut_icon.svg"
+                                alt="cut_icon"></button></div>
+                    <div class="g_item7 g_items"><button type="submit">4</button></div>
+                    <div class="g_item8 g_items"><button type="submit">5</button></div>
+                    <div class="g_item9 g_items"><button type="submit">6</button></div>
+                    <div class="g_item10 g_items"><button type="submit">-</button></div>
+                    <div class="g_item11 g_items"><button type="submit">1/X </button></div>
+                    <div class="g_item12 g_items"><button type="submit">C</button></div>
+                    <div class="g_item13 g_items"><button type="submit">1</button></div>
+                    <div class="g_item14 g_items"><button type="submit">2</button></div>
+                    <div class="g_item15 g_items"><button type="submit">3</button></div>
+                    <div class="g_item16 g_items"><button type="submit">*</button></div>
+                    <div class="g_item17 g_items"><button type="submit">%</button></div>
+                    <div class="g_item18 g_items"><button type="submit">=</button></div>
+                    <div class="g_item19 g_items"><button type="submit">00</button></div>
+                    <div class="g_item20 g_items"><button type="submit">0</button></div>
+                    <div class="g_item21 g_items"><button type="submit">.</button></div>
+                    <div class="g_item22 g_items"><button type="submit">/</button></div>
+                    <div class="g_item23 g_items"><button type="submit">!</button></div>
+                </div>
             </div>
         </div>
     </section>

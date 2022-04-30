@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CUSTOM-CSS-FILE-LINK -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <title>Sidebar</title>
+</head>
+
+<body>
+    <section class="min_vh_100 d_flex align_items_center justify_content_center position_relative">
+        <aside
+            class="position_absolute sidebar d_f lex align_items_center justify_content _center flex_column min_vh_100"
+            id="sidebar">
+            <div class="p_5 position_relative">
+                <!-- <a href="#"> -->
+                <img src="./assets/images/icons/close_icon.svg" alt="close_icon" id="closeSidebar"
+                    class="close_icon position_absolute">
+                <!-- </a> -->
+                <p class="fw_600 fs_2 my_5">Sidebar</p>
+                <ul class="text_center">
+                    <li><a href="http://" target="_blank" rel="noopener noreferrer" class="button_outlined">LINK 1</a>
+                    </li>
+                    <li><a href="http://" target="_blank" rel="noopener noreferrer" class="button_outlined">LINK 2</a>
+                    </li>
+                    <li><a href="http://" target="_blank" rel="noopener noreferrer" class="button_outlined">LINK 3</a>
+                    </li>
+                    <li><a href="http://" target="_blank" rel="noopener noreferrer" class="button_outlined">LINK 4</a>
+                    </li>
+                    <li><a href="http://" target="_blank" rel="noopener noreferrer" class="button_outlined">LINK 5</a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+        <div id="overlay"></div>
+        <div class="text_center mw_460">
+            <h1 class="mb_5 fs_1 fw_normal black_400">Sidebar</h1>
+            <button type="submit" id="openSidebar" class="mb_5 btn button_filled color_white">Open Sidebar</button>
+        </div>
+    </section>
+    <script>
+        const overlay = document.querySelector("#overlay");
+        const closeSidebar = document.querySelector("#closeSidebar");
+        const sidebar = document.querySelector("#sidebar");
+        const openSidebar = document.querySelector("#openSidebar");
+
+        openSidebar.addEventListener("click", function () {
+            sidebar.style.left = "0";
+            overlay.classList.add("dark_overlay");
+        });
+        closeSidebar.addEventListener("click", function () {
+            sidebar.style.left = "-286px";
+            overlay.classList.remove("dark_overlay");
+        });
+        overlay.addEventListener("click", function () {
+            sidebar.style.left = "-286px";
+            this.classList.remove("dark_overlay");
+        });
+    </script>
+</body>
+
+</html>
