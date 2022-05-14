@@ -12,7 +12,7 @@
 
 <body>
     <section class="min_vh_100 d_flex align_items_center justify_content_center">
-        <div class="text_center mw_460">
+        <div class="text_center mw_4 60">
             <h1 class="mb_5 fs_1 fw_normal black_400">Simple Calculator</h1>
             <div class="shadow_1 p_4">
                 <div class="result_box text_left p_2 mb_1">
@@ -20,98 +20,282 @@
                     <p class="fs_1 text_center whiteSpace_nowrap overflow_auto" id="total_output">7</p>
                 </div>
                 <!-- FIRST INPUT -->
-                <input type="number" id="firstValue" placeholder="Enter first value" class="w_100 inputField mb_1">
+                <input id="firstValue" placeholder="Enter first value" class="w_100 inputField mb_1">
                 <!-- SECOND INPUT -->
-                <input type="number" id="secondValue" placeholder="Enter second value" class="w_100 inputField mb_3">
+                <input id="secondValue" placeholder="Enter second value" class="w_100 inputField mb_3">
                 <!-- BUTTONS -->
                 <div class="mb_5 d_flex justify_content_between">
-                    <button type="submit" id="addition_sign" class="calc_btn button_outlined">+</button>
-                    <button type="submit" id="subtraction_sign" class="calc_btn button_outlined">-</button>
-                    <button type="submit" id="multipy_sign" class="calc_btn button_outlined">*</button>
-                    <button type="submit" id="devision_sign" class="calc_btn button_outlined">/</button>
-                    <button type="reset" id="clear_value" class="btn button_filled color_white">Clear</button>
+                    <button type="submit" data-value="+" id="addition_sign"
+                        class="calc_btn button_outlined">Add</button>
+                    <button type="submit" data-value="-" id="subtraction_sign"
+                        class="calc_btn button_outlined">Sub</button>
+                    <button type="submit" data-value="*" id="multipy_sign"
+                        class="calc_btn button_outlined">Multiply</button>
+                    <button type="submit" data-value="/" id="devision_sign"
+                        class="calc_btn button_outlined">Devide</button>
+                    <button type="reset" data-value="clear" id="clear_value"
+                        class="btn button_filled color_white">Clear</button>
                 </div>
 
             </div>
         </div>
     </section>
-
-    <!-- CUSTOM-JS-FILE-LINK -->
-    <!-- <script src="./assets/js/app.js"></script> -->
     <script>
-        // STEPS FOR SIMPLE CALCULATOR:-
-        // 1. first get the all buttons and signs 
-        // 2. get all inputs  
-        // 3. get the expertion area  
-        // 4. also get the total area  
-        // 5. create onclick functions on buttons to play certian tasks
-        // 6. also create event listener on input feild to store value in expertion area
-        // 7. create another funtion to do arithmetic tasks
-
         const calcArea = document.querySelector("#calcArea");
         const total = document.querySelector("#total_output");
-        const additionSign = document.querySelector("#addition_sign");
-        const subtractionSign = document.querySelector("#subtraction_sign");
-        const multipySign = document.querySelector("#multipy_sign");
-        const devisionSign = document.querySelector("#devision_sign");
-        const clearValue = document.querySelector("#clear_value");
         const firstValue = document.querySelector("#firstValue");
         const secondValue = document.querySelector("#secondValue");
-
-        additionSign.addEventListener("click", function () {
-            total.innerHTML = +firstValue.value + +secondValue.value;
-            calcArea.innerHTML = firstValue.value + " + " + secondValue.value;
-            if (firstValue.value == "" && secondValue.value == "") {
-                calcArea.innerHTML = 0 + "+";
-                alert("please put some values in input feilds !");
-                return;
-            };
-
+        const buttons = document.querySelectorAll("[data-value]");
+        buttons.forEach(function (button, index) {
+            const icons = button.dataset.value;
+            button.addEventListener("click", function () {
+                if (index != 4) {
+                    if (firstValue.value == "" || secondValue.value == "") {
+                        alert("Put value in input Feild !")
+                        firstValue.value = "";
+                        secondValue.value = "";
+                        return;
+                    };
+                    if (isNaN(firstValue.value) || isNaN(secondValue.value)) {
+                        alert("Put value in input Feild !")
+                        firstValue.value = "";
+                        secondValue.value = "";
+                        return;
+                    };
+                    total.innerHTML = eval(
+                        // `${+firstValue.value} ${icons} ${ +secondValue.value}`);
+                        +firstValue.value + icons + +secondValue.value);
+                    calcArea.innerHTML = firstValue.value + icons + secondValue.value;
+                    if (index = 3) {
+                        if (secondValue.value == 0) {
+                            alert("Enable to devide with ZERO !");
+                            calcArea.innerHTML = " ";
+                            total.innerHTML = " ";
+                        };
+                        firstValue.value = "";
+                        secondValue.value = "";
+                        return;
+                    };
+                    firstValue.value = "";
+                    secondValue.value = "";
+                    return;
+                };
+                switch (index) {
+                    case 4:
+                        calcArea.innerHTML = " ";
+                        total.innerHTML = " ";
+                        firstValue.value = "";
+                        secondValue.value = "";
+                        break;
+                };
+            });
         });
 
-        subtractionSign.addEventListener("click", function () {
-            total.innerHTML = +firstValue.value - +secondValue.value;
-            calcArea.innerHTML = firstValue.value + " - " + secondValue.value;
-            if (firstValue.value == "" && secondValue.value == "") {
-                calcArea.innerHTML = 0 + "-";
-                alert("please put some values in input feilds !");
-                return;
-            };
-        });
+        // additionSign.addEventListener("click", function () {
 
-        multipySign.addEventListener("click", function () {
-            total.innerHTML = +firstValue.value * +secondValue.value;
-            calcArea.innerHTML = firstValue.value + " * " + secondValue.value;
-            if (firstValue.value == "" && secondValue.value == "") {
-                calcArea.innerHTML = 0 + "*";
-                alert("please put some values in input feilds !");
-                return;
-            };
+        //     total.innerHTML = +firstValue.value + +secondValue.value;
+        //     calcArea.innerHTML = firstValue.value + " + " + secondValue.value;
+        //     if (isNaN(firstValue.value) || isNaN(secondValue.value)) {
+        //         calcArea.innerHTML = 0 + "+";
+        //         alert("please put number value !");
+        //         calcArea.innerHTML = " ";
+        //         total.innerHTML = " ";
+        //         firstValue.value = "";
+        //         secondValue.value = "";
+        //         return;
+        //     }
 
-        });
+        //     if (firstValue.value == "" && secondValue.value == "") {
+        //         calcArea.innerHTML = 0 + "+";
+        //         alert("please put some values in input feilds !");
+        //         calcArea.innerHTML = " ";
+        //         total.innerHTML = " ";
+        //         firstValue.value = "";
+        //         secondValue.value = "";
+        //         return;
+        //     };
 
-        devisionSign.addEventListener("click", function () {
-            if (firstValue.value == "" && secondValue.value == "") {
-                calcArea.innerHTML = 0 + "/";
-                total.innerHTML = 0;
-                alert("please put some values in input feilds !");
-                return;
-            };
-            total.innerHTML = +firstValue.value / +secondValue.value;
-            calcArea.innerHTML = firstValue.value + " / " + secondValue.value;
-        });
+        //     if (firstValue.value == "" || secondValue.value == null) {
+        //         alert("please put the values in both inputs !");
+        //         calcArea.innerHTML = " ";
+        //         total.innerHTML = " ";
+        //         firstValue.value = "";
+        //         secondValue.value = "";
+        //         return;
+        //     };
 
-        clearValue.addEventListener("click", function () {
+        //     if (firstValue.value == null || secondValue.value == "") {
+        //         alert("please put the values in both inputs !");
+        //         calcArea.innerHTML = " ";
+        //         total.innerHTML = " ";
+        //         firstValue.value = "";
+        //         secondValue.value = "";
+        //         return;
+        //     };
+        //     firstValue.value = "";
+        //     secondValue.value = "";
+        // });
 
-            calcArea.innerHTML = " ";
-            document.querySelectorAll("input").value = "";
+        // // subtractionSign.addEventListener("click", function () {
 
-            total.innerHTML = " ";
-            // calcArea.innerHTML = "";
+        // //     total.innerHTML = +firstValue.value - +secondValue.value;
+        // //     calcArea.innerHTML = firstValue.value + " + " + secondValue.value;
+        // //     if (isNaN(firstValue.value) || isNaN(secondValue.value)) {
+        // //         calcArea.innerHTML = 0 - "-";
+        // //         alert("please put number value !");
+        // //         calcArea.innerHTML = " ";
+        // //         total.innerHTML = " ";
+        // //         firstValue.value = "";
+        // //         secondValue.value = "";
+        // //         return;
+        // //     }
+        // //     if (firstValue.value == "" && secondValue.value == "") {
+        // //         calcArea.innerHTML = 0 + "-";
+        // //         alert("please put some values in input feilds !");
+        // //         calcArea.innerHTML = " ";
+        // //         total.innerHTML = " ";
+        // //         firstValue.value = "";
+        // //         secondValue.value = "";
+        // //         return;
+        // //     };
 
-            firstValue.value = "";
-            secondValue.value = "";
-        });
+        // //     if (firstValue.value == "" || secondValue.value == null) {
+        // //         alert("please put the values in both inputs !");
+        // //         calcArea.innerHTML = " ";
+        // //         total.innerHTML = " ";
+        // //         firstValue.value = "";
+        // //         secondValue.value = "";
+        // //         return;
+        // //     };
+
+        // //     if (firstValue.value == null || secondValue.value == "") {
+        // //         alert("please put the values in both inputs !");
+        // //         calcArea.innerHTML = " ";
+        // //         total.innerHTML = " ";
+        // //         firstValue.value = "";
+        // //         secondValue.value = "";
+        // //         return;
+        // //     };
+        // //     firstValue.value = "";
+        // //     secondValue.value = "";
+        // // });
+
+        // // multipySign.addEventListener("click", function () {
+        // //     total.innerHTML = +firstValue.value * +secondValue.value;
+        // //     calcArea.innerHTML = firstValue.value + " * " + secondValue.value;
+        // //     if (isNaN(firstValue.value) || isNaN(secondValue.value)) {
+        // //         calcArea.innerHTML = 0 * "*";
+        // //         alert("please put number value !");
+        // //         calcArea.innerHTML = " ";
+        // //         total.innerHTML = " ";
+        // //         firstValue.value = "";
+        // //         secondValue.value = "";
+        // //         return;
+        // //     }
+        // //     if (firstValue.value == "" && secondValue.value == "") {
+        // //         calcArea.innerHTML = 0 * "-";
+        // //         alert("please put some values in input feilds !");
+        // //         calcArea.innerHTML = " ";
+        // //         total.innerHTML = " ";
+        // //         firstValue.value = "";
+        // //         secondValue.value = "";
+        // //         return;
+        // //     };
+
+        // //     if (firstValue.value == "" || secondValue.value == null) {
+        // //         alert("please put the values in both inputs !");
+        // //         calcArea.innerHTML = " ";
+        // //         total.innerHTML = " ";
+        // //         firstValue.value = "";
+        // //         secondValue.value = "";
+        // //         return;
+        // //     };
+
+        // //     if (firstValue.value == null || secondValue.value == "") {
+        // //         alert("please put the values in both inputs !");
+        // //         calcArea.innerHTML = " ";
+        // //         total.innerHTML = " ";
+        // //         firstValue.value = "";
+        // //         secondValue.value = "";
+        // //         return;
+        // //     };
+        // //     firstValue.value = "";
+        // //     secondValue.value = "";
+
+        // // });
+
+        // // devisionSign.addEventListener("click", function () {
+
+        // //     total.innerHTML = +firstValue.value / +secondValue.value;
+        // //     calcArea.innerHTML = firstValue.value + " / " + secondValue.value;
+        // //     if (isNaN(firstValue.value) || isNaN(secondValue.value)) {
+        // //         calcArea.innerHTML = 0 / "/";
+        // //         alert("please put number value !");
+        // //         calcArea.innerHTML = " ";
+        // //         total.innerHTML = " ";
+        // //         firstValue.value = "";
+        // //         secondValue.value = "";
+        // //         return;
+        // //     }
+        // //     if (secondValue.value == 0) {
+        // //         calcArea.innerHTML = 0 / "/";
+        // //         alert("can't able to devide with zero !");
+        // //         calcArea.innerHTML = " ";
+        // //         total.innerHTML = " ";
+        // //         firstValue.value = "";
+        // //         secondValue.value = "";
+        // //         return;
+        // //     };
+        // //     if (firstValue.value == "" && secondValue.value == "") {
+        // //         calcArea.innerHTML = 0 / "/";
+        // //         alert("please put some values in input feilds !");
+        // //         calcArea.innerHTML = " ";
+        // //         total.innerHTML = " ";
+        // //         firstValue.value = "";
+        // //         secondValue.value = "";
+        // //         return;
+        // //     };
+
+        // //     if (firstValue.value == "" || secondValue.value == null) {
+        // //         alert("please put the values in both inputs !");
+        // //         calcArea.innerHTML = " ";
+        // //         total.innerHTML = " ";
+        // //         firstValue.value = "";
+        // //         secondValue.value = "";
+        // //         return;
+        // //     };
+
+        // //     if (firstValue.value == null || secondValue.value == "") {
+        // //         alert("please put the values in both inputs !");
+        // //         calcArea.innerHTML = " ";
+        // //         total.innerHTML = " ";
+        // //         firstValue.value = "";
+        // //         secondValue.value = "";
+        // //         return;
+        // //     };
+        // //     if (firstValue.value == null || secondValue.value == null) {
+        // //         alert("please put the values in both inputs !");
+        // //         calcArea.innerHTML = " ";
+        // //         total.innerHTML = " ";
+        // //         firstValue.value = "";
+        // //         secondValue.value = "";
+        // //         return;
+        // //     };
+
+        // //     firstValue.value = "";
+        // //     secondValue.value = "";
+        // // });
+
+        // // clearValue.addEventListener("click", function () {
+
+        //     calcArea.innerHTML = " ";
+        //     document.querySelectorAll("input").value = "";
+
+        //     total.innerHTML = " ";
+
+        //     firstValue.value = "";
+        //     secondValue.value = "";
+        // });
     </script>
 </body>
 

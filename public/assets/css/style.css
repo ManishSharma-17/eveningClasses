@@ -25,6 +25,10 @@
     --black: #0000;
 }
 
+.text_gray {
+    color: var(--gray);
+}
+
 body {
     background: #F7F7F7;
     /* background: black; */
@@ -255,6 +259,10 @@ button {
     border: 1px solid var(--light_blue);
 }
 
+.border_normal {
+    border: 1px solid #E6E6E6;
+}
+
 .color_white {
     color: var(--white);
 }
@@ -264,7 +272,7 @@ button {
 }
 
 .text_left {
-    text-align-last: left;
+    text-align: left;
 }
 
 .retake_icon {

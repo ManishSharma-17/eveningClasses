@@ -19,7 +19,8 @@ const cut = document.querySelector("#cut");
 // const additionSign = document.querySelector("#addition_sign");
 
 addValue.addEventListener("click", function () {
-    adding.innerHTML = 1 + adding.innerHTML * 1;
+    adding.innerHTML = +adding.innerHTML + 1;
+    // adding.innerHTML = 1 + adding.innerHTML * 1;
 });
 
 cut.addEventListener("click", function () {
