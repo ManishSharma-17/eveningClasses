@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 
     <title>Sidebar</title>
+
 </head>
 
 <body>
@@ -57,9 +58,10 @@
             sidebar.style.left = "-286px";
             overlay.classList.remove("dark_overlay");
         });
-        overlay.addEventListener("click", function () {
+        overlay.addEventListener("click", function (e) {
             sidebar.style.left = "-286px";
-            this.classList.remove("dark_overlay");
+            // this.classList.remove("dark_overlay");
+            e.target.classList.remove("dark_overlay");
         });
     </script>
 </body>

@@ -3,6 +3,6 @@
     "editor.formatOnType": true,
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
-    "liveServer.settings.port": 5502,
+    "liveServer.settings.port": 5503,
     "liveServer.settings.CustomBrowser": "chrome"
 }

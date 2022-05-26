@@ -28,28 +28,6 @@
             .pt_0 {
                 padding-top: 0;
             }
-
-            .accordianHeading {
-                color: var(--gray);
-
-            }
-
-            .accordianContainer {
-                margin: 20px 0;
-            }
-
-            .accordianContainer.active {
-                border: 1px solid var(--light_blue);
-                border-radius: 5px;
-            }
-
-            .accordianContainer.active .accordianHead {
-                border: none;
-            }
-
-            .accordianContainer.active .accDiscription {
-                display: block;
-            }
         </style>
     </head>
 
@@ -62,9 +40,9 @@
                         <div id="accordianHead" class="accordianHead d_flex br_5 p_5 justify_content_between align_items_center 
                             border_normal">
                             <p class="accordianHeading">Group</p>
-                            <img src="./assets/images/icons/arrow_icon.png" alt="arrow_icon">
+                            <img src="./assets/images/icons/arrow_icon.png" alt="arrow_icon" class="arrow_icon">
                         </div>
-                        <p class="text_gray p_3 pt_0 accDiscription d_none">Nibh dictum nulla morbi ornare. Varius sit
+                        <p class="text_gray  pt_0 accDiscription ">Nibh dictum nulla morbi ornare. Varius sit
                             at eget
                             nunc. Nibh
                             dictum
@@ -79,7 +57,7 @@
                             <p class="accordianHeading">Group</p>
                             <img src="./assets/images/icons/arrow_icon.png" alt="arrow_icon">
                         </div>
-                        <p class="text_gray p_3 pt_0 accDiscription d_none">Nibh dictum nulla morbi ornare. Varius sit
+                        <p class="text_gray  pt_0 accDiscription ">Nibh dictum nulla morbi ornare. Varius sit
                             at eget
                             nunc. Nibh
                             dictum
@@ -94,7 +72,7 @@
                             <p class="accordianHeading">Group</p>
                             <img src="./assets/images/icons/arrow_icon.png" alt="arrow_icon">
                         </div>
-                        <p class="text_gray p_3 pt_0 accDiscription d_none">Nibh dictum nulla morbi ornare. Varius sit
+                        <p class="text_gray  pt_0 accDiscription ">Nibh dictum nulla morbi ornare. Varius sit
                             at eget
                             nunc. Nibh
                             dictum
@@ -109,7 +87,7 @@
                             <p class="accordianHeading">Group</p>
                             <img src="./assets/images/icons/arrow_icon.png" alt="arrow_icon">
                         </div>
-                        <p class="text_gray p_3 pt_0 accDiscription d_none">Nibh dictum nulla morbi ornare. Varius sit
+                        <p class="text_gray  pt_0 accDiscription ">Nibh dictum nulla morbi ornare. Varius sit
                             at eget
                             nunc. Nibh
                             dictum
@@ -122,12 +100,12 @@
             </div>
         </section>
         <script>
-            const accordian = document.querySelectorAll("#accordian");
-            const accItem = document.querySelectorAll("#accordianHead");
-            accordian.forEach((accItems) => {
+            const accordianHead = document.querySelectorAll("#accordianHead");
+
+            accordianHead.forEach((accItems) => {
                 accItems.addEventListener("click", (e) => {
                     const remove = document.querySelector("#accordian.active");
-                    accItems.classList.toggle("active");
+                    accItems.parentElement.classList.toggle('active')
                     remove && remove.classList.remove("active");
                 });
             });

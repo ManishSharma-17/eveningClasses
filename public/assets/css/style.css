@@ -111,7 +111,7 @@ button {
 
 
 .pb_2 {
-    padding-bottom: 2rem;
+    padding-bottom: .5rem;
 }
 
 .p_2 {
@@ -296,6 +296,8 @@ button {
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
     border-radius: 5px;
+    cursor: not-allowed;
+    user-select: none;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -303,6 +305,15 @@ input.inputField::-webkit-outer-spin-button,
 input.inputField::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+input:focus {
+    border: 1px solid red !important;
+}
+
+.result_box:hover,
+input:hover {
+    outline: 1px solid var(--light_blue);
 }
 
 /* Firefox */
@@ -497,12 +508,6 @@ input.inputField[type=number] {
     cursor: pointer;
 }
 
-/* .dark_overlay {
-    position: relative;
-    width: 100vw;
-    min-height: 100vh;
-} */
-
 .dark_overlay {
     position: absolute;
     background: rgba(0, 0, 0, 0.336);
@@ -518,4 +523,46 @@ input.inputField[type=number] {
         --fs_2: .8rem;
         --fs_3: .8rem;
     }
+}
+
+/* ACCORDIAN PAGE */
+.accordianHead {
+    cursor: pointer;
+}
+
+.accordianHeading {
+    color: var(--gray);
+}
+
+.accordianContainer {
+    margin: 20px 0;
+    transition: 3s ease
+}
+
+.accordianContainer.active {
+    border: 1px solid var(--light_blue);
+    border-radius: 5px;
+}
+
+.accordianContainer.active .accordianHead {
+    border: none;
+}
+
+.accordianContainer.active .accDiscription {
+    display: block;
+}
+
+.accordianContainer.active img[alt="arrow_icon"] {
+    transform: rotate(180deg);
+}
+
+.accDiscription {
+    max-height: 0px;
+    overflow: hidden;
+    padding: 0;
+}
+
+.accordianContainer.active .accDiscription {
+    max-height: unset;
+    padding: 16px;
 }
