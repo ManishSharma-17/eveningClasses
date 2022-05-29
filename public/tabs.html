@@ -52,12 +52,12 @@
                 padding-bottom: 8px;
             }
 
-            [data-discription=tabDiscription] {
+            [data-shown="false"] {
                 display: none;
                 /* visibility: hidden; */
             }
 
-            [data-discription=tabDiscription][data-shown="true"] {
+            [data-shown="true"] {
                 display: block;
                 /* visibility: visible; */
             }
@@ -71,32 +71,26 @@
                 <div class="shadow_1 p_5">
                     <div class="d_flex flex_column">
                         <div class="tab_heading d_flex">
-                            <button data-value="tabs" data-tab-id="1"
-                                class="pb_2 black_400 me_3 position_relative active">Tab1</button>
-                            <button data-value="tabs" data-tab-id="2"
-                                class="pb_2 black_400 me_3 position_relative">Tab2</button>
-                            <button data-value="tabs" data-tab-id="3"
-                                class="pb_2 black_400 me_3 position_relative">Tab3</button>
+                            <button data-tab-id="1" class="pb_2 black_400 me_3 position_relative active">Tab1</button>
+                            <button data-tab-id="2" class="pb_2 black_400 me_3 position_relative">Tab2</button>
+                            <button data-tab-id="3" class="pb_2 black_400 me_3 position_relative">Tab3</button>
                         </div>
                         <div class="tab_content text_left pt_3">
-                            <div data-discription-id="1" data-shown="true" data-discription="tabDiscription"
-                                class="tab_box">
+                            <div data-discription-id="1" data-shown="true" class="tab_box">
                                 <h1>Tab 1</h1>
                                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis perspiciatis
                                     impedit consequatur modi odit voluptatum cupiditate nulla obcaecati. Nam modi
                                     praesentium consectetur repudiandae vel, excepturi eaque dignissimos vero
                                     consequuntur fuga!</p>
                             </div>
-                            <div data-discription-id="2" data-shown="false" data-discription="tabDiscription"
-                                class="tab_box ">
+                            <div data-discription-id="2" data-shown="false" class="tab_box ">
                                 <h1>Tab 2</h1>
                                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis perspiciatis
                                     impedit consequatur modi odit voluptatum cupiditate nulla obcaecati. Nam modi
                                     praesentium consectetur repudiandae vel, excepturi eaque dignissimos vero
                                     consequuntur fuga!</p>
                             </div>
-                            <div data-discription-id="3" data-shown="false" data-discription="tabDiscription"
-                                class="tab_box ">
+                            <div data-discription-id="3" data-shown="false" class="tab_box ">
                                 <h1>Tab 3</h1>
                                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis perspiciatis
                                     impedit consequatur modi odit voluptatum cupiditate nulla obcaecati. Nam modi
@@ -109,25 +103,19 @@
             </div>
         </section>
         <script>
-            const tabDiscription = document.querySelectorAll("[data-discription = tabDiscription]");
-            const tabs = document.querySelectorAll("[data-tab-id]");
-            const dataDiscriptionId = document.querySelectorAll("[data-discription-id]");
-            const dataShown = document.querySelectorAll("[data-shown]");
-            // const btnId = document.querySelectorAll("[data-tab-id]");
-
-            tabs.forEach((btn) => {
-                // if (tabs.dataset.tabId.value == "1") {
-                //     btn.addEventListener("click", () => {
-                //         console.log("hi");
-                //     });
-                // };
-                btn.addEventListener("click", () => {
-                    const remover = document.querySelector("[data-value=tabs].active");
-                    btn.classList.add("active");
-                    remover && remover != btn && remover.classList.remove("active");
+            const tabs = document.querySelectorAll('[data-tab-id]');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const activeTab = document.querySelector('button.active');
+                    activeTab.classList.remove('active');
+                    tab.classList.add('active');
+                    const activeDescription = document.querySelector("[data-shown=true]");
+                    activeDescription.dataset.shown = false;
+                    const description = document.querySelector(
+                        `[data-discription-id="${tab.dataset.tabId}"]`);
+                    description.dataset.shown = 'true';
                 });
-
-            });
+            })
         </script>
     </body>
 
