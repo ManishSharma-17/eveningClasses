@@ -102,47 +102,25 @@
                     </form>
                     <p class="text_gray text_left my_4">Today’s tasks</p>
                     <div id="taskContainer"></div>
+
                 </div>
             </div>
         </section>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.1.0/uuidv4.min.js"></script>
         <script>
-            const taskForm = document.querySelector('#taskForm');
-            const taskInput = document.querySelector('#taskInput');
-            const taskContainer = document.querySelector('#taskContainer');
+            const taskInput = document.querySelector("#taskInput");
+            const taskContainer = document.querySelector("#taskContainer");
+            const taskForm = document.querySelector("#taskForm");
 
-            let tasksList = [];
+            !localStorage.getItem('taskList') && localStorage.setItem('taskList', JSON.stringify([]))
+            let taskList = JSON.parse(localStorage.getItem('taskList'));
 
-            if (JSON.parse(localStorage.getItem('taskListNew'))) {
-                tasksList = JSON.parse(localStorage.getItem('taskListNew'))
-            }
-
-            window.addEventListener('DOMContentLoaded', () => {
-                updateTaskListUi()
-            })
-
-            taskForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-
-                let newTask = {
-                    id: uuidv4(),
-                    name: taskInput.value,
-                    isCompleted: false
-                }
-
-                tasksList.push(newTask)
-
-                updateTaskListUi()
-
-                taskInput.value = ''
-            })
-
-            function createTaskHTML(name, isCompleted, id) {
+            const createTask = (id, name, done) => {
                 return `
-                <div id="task" class="d_flex justify_content_between task ${isCompleted && 'done'}">
+                
+                <div id="task" class="d_flex justify_content_between task ${done && 'done'}">
                     <p id="taskHeading">${name}</p>
                     <div id="btnParent" class="d_flex">
-                        <button id="done" onclick="handleTaskDone('${id}')" class="bg_transparent border_none">
+                        <button id="done" onclick="handleTaskDone(${id})" class="bg_transparent border_none">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -153,7 +131,7 @@
                                     fill="black" />
                             </svg>
                         </button>
-                        <button id="delete" onclick="handleTaskDelete('${id}')" class="ms_3 bg_transparent border_none">
+                        <button id="delete" onclick="handleTaskRemove(${id})" class="ms_3 bg_transparent border_none">
                             <svg width="18" height="20" viewBox="0 0 18 20" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -164,34 +142,55 @@
                         </button>
                     </div>
                 </div>
+
                 `;
             }
 
-            function updateTaskListUi() {
-                localStorage.setItem('taskListNew', JSON.stringify(tasksList))
-                taskContainer.innerHTML = '';
-                tasksList.forEach(task => {
-                    taskContainer.innerHTML += createTaskHTML(task.name, task.isCompleted, task.id)
-                })
-            }
+            const updateTaskList = (obj) => {
 
-            function getIndexById(id) {
-                return tasksList.findIndex(task => task.id == id);
-            }
+                if (obj) {
 
-            function handleTaskDone(id) {
-                tasksList[getIndexById(id)].isCompleted = !tasksList[getIndexById(id)].isCompleted;
-                updateTaskListUi();
-            }
+                    taskList.push(obj);
 
-            function handleTaskDelete(id) {
-                let confirmed = confirm('Do you want to delete this task?') ++
+                    taskContainer.innerHTML += createTask(obj.id, obj.name, obj.isCompleted);
 
-                if (confirmed) {
-                    tasksList.splice(getIndexById(id), 1);
-                    updateTaskListUi();
+                } else {
+
+                    taskList.forEach(task => {
+                        taskContainer.innerHTML += createTask(task.id, task.name, task.isCompleted)
+                    })
                 }
 
+                localStorage.setItem('taskList', JSON.stringify(taskList))
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                updateTaskList()
+            });
+
+            taskForm.addEventListener("submit", (e) => {
+
+                e.preventDefault();
+                updateTaskList({
+                    id: taskList.length != 0 ? taskList[taskList.length - 1].id + 1 : 0,
+                    name: taskInput.value,
+                    isCompleted: false
+                });
+
+                taskInput.value = ''
+
+            });
+
+            const handleTaskDone = (index) => {
+                taskContainer.innerHTML = ''
+                taskList[index].isCompleted = !taskList[index].isCompleted;
+                updateTaskList()
+            }
+
+            const handleTaskRemove = (index) => {
+                taskContainer.innerHTML = ''
+                taskList = taskList.filter(task => task.id != index)
+                updateTaskList()
             }
         </script>
     </body>
