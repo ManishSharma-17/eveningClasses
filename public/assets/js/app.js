@@ -1,3 +1,9 @@
+import add from './add.js';
+
+console.log(add(5, 15));
+
+
+
 // 1. get p element
 // 2. create function which increases the currnet value of p by 1
 // 3. add that function to btn

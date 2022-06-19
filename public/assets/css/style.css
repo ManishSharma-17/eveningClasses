@@ -146,6 +146,10 @@ button {
     margin-bottom: 1rem;
 }
 
+.mb_4 {
+    margin-bottom: 1.5rem;
+}
+
 .fs_1 {
     font-size: var(--fs_1);
 }
@@ -477,6 +481,10 @@ input.inputField[type=number] {
 
 .d_none {
     display: none;
+}
+
+.d_inline_block {
+    display: inline-block;
 }
 
 .sidebar {
