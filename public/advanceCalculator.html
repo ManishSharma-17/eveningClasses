@@ -1,0 +1,132 @@
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- CUSTOM-CSS-FILE-LINK -->
+        <link rel="stylesheet" href="./assets/css/style.css">
+        <title>Advance Counter </title>
+    </head>
+
+    <body>
+        <section class="min_vh_100 d_flex align_items_center justify_content_center">
+            <div class="text_center mw_540">
+                <h1 class="mb_5 fs_1 fw_normal black_400">Advance Calculator</h1>
+                <div class="shadow_1 p_5">
+                    <div class="result_box text_left p_2 mb_2">
+                        <p class="mb_3 black_400 whiteSpace_nowrap overflow_auto" id="prev3"></p>
+                        <p class="mb_3 black_400 whiteSpace_nowrap overflow_auto" id="prev2"></p>
+                        <p class="mb_3 black_400 whiteSpace_nowrap overflow_auto" id="prev1"></p>
+                        <p class="fs_1 text_center whiteSpace_nowrap overflow_auto" id="currentValue"></p>
+                    </div>
+                    <!-- BUTTONS -->
+                    <div class="d_grid">
+                        <div class="g_item1 g_items"><button data-value="num" type="submit">7</button></div>
+                        <div class="g_item2 g_items"><button data-value="num" type="submit">8</button></div>
+                        <div class="g_item3 g_items"><button data-value="num" type="submit">9</button></div>
+                        <div class="g_item4 g_items"><button data-value="oprators" type="submit">+</button></div>
+                        <div class="g_item5 g_items"><button data-value="oprators" type="submit">^</button></div>
+                        <div class="g_item6 g_items"><button data-value="cut" type="submit"><img
+                                    src="./assets/images/icons/cut_icon.svg" alt="cut_icon"></button></div>
+                        <div class="g_item7 g_items"><button data-value="num" type="submit">4</button></div>
+                        <div class="g_item8 g_items"><button data-value="num" type="submit">5</button></div>
+                        <div class="g_item9 g_items"><button data-value="num" type="submit">6</button></div>
+                        <div class="g_item10 g_items"><button data-value="oprators" type="submit">-</button></div>
+                        <div class="g_item11 g_items"><button data-value="oprators" type="submit">1/x</button></div>
+                        <div class="g_item12 g_items"><button data-value="clear" type="submit">C</button></div>
+                        <div class="g_item13 g_items"><button data-value="num" type="submit">1</button></div>
+                        <div class="g_item14 g_items"><button data-value="num" type="submit">2</button></div>
+                        <div class="g_item15 g_items"><button data-value="num" type="submit">3</button></div>
+                        <div class="g_item16 g_items"><button data-value="oprators" type="submit">*</button></div>
+                        <div class="g_item17 g_items"><button data-value="oprators" type="submit">%</button></div>
+                        <div class="g_item18 g_items"><button data-value="result" type="submit">=</button></div>
+                        <div class="g_item19 g_items"><button data-value="num" type="submit">00</button></div>
+                        <div class="g_item20 g_items"><button data-value="num" type="submit">0</button></div>
+                        <div class="g_item21 g_items"><button data-value="dot" type="submit">.</button></div>
+                        <div class="g_item22 g_items"><button data-value="oprators" type="submit">/</button></div>
+                        <div class="g_item23 g_items"><button data-value="!" type="submit">!</button></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script>
+            const prev1 = document.querySelector("#prev1");
+            const prev2 = document.querySelector("#prev2");
+            const prev3 = document.querySelector("#prev3");
+            const currentValue = document.querySelector("#currentValue");
+            const buttons = document.querySelectorAll("[data-value]");
+            buttons.forEach(function (button, index) {
+                let icons = button.innerHTML;
+                button.addEventListener("click", function () {
+                    const resultHistory = (prev_1, prev_2, prev_3) => {
+                        prev3.innerHTML = prev2.innerHTML;
+                        prev2.innerHTML = prev1.innerHTML;
+                        prev1.innerHTML = currentValue.innerHTML;
+                    };
+                    if (button.dataset.value != "result") {
+                        currentValue.innerHTML += icons;
+                    };
+                    if (button.dataset.value == "cut") {
+                        currentValue.innerHTML = currentValue.innerHTML.slice(0, -1);
+                        console.log("upar vala");
+                    };
+                    if ((button.dataset.value == "oprators") && (currentValue.innerHTML == "")) {
+                        currentValue.innerHTML = 0;
+                        alert("hi");
+                    };
+                    if ((button.dataset.value == "result") && (currentValue.innerHTML != "")) {
+                        resultHistory(currentValue.innerHTML, prev1.innerHTML, prev2.innerHTML);
+                        currentValue.innerHTML = eval(currentValue.innerHTML);
+                    };
+                    if (button.dataset.value == "clear") {
+                        currentValue.innerHTML = "";
+                        prev2.innerHTML = "";
+                        prev3.innerHTML = "";
+                        prev1.innerHTML = "";
+                    };
+                    if (button.dataset.value == "cut") {
+                        currentValue.innerHTML = currentValue.innerHTML.slice(0, -1);
+                        console.log("neeche vala");
+                    };
+                    // if (button.innerHTML == "!") {
+                    //     let output = 1;
+                    //     let factorial = () => {
+                    //         let blankArr = [];
+                    //         for (let blankArr = 0; blankArr < array.length; blankArr++) {
+                    //             const element = array[blankArr];
+                    //         }
+                    //     };
+                    //     factorial();
+                    // };
+                    // if (button.innerHTML == "%") {
+                    //     const percentage = () => {
+                    //         let a = currentValue.innerHTML.split(0);
+                    //         let b = currentValue.innerHTML.split(2);
+                    //         console.log(currentValue.innerHTML);
+                    //         return (a / b) * 100;
+                    //     };
+                    //     percentage();
+                    // };
+                    if (button.innerHTML == "1/x") {
+                        // alert("hi");
+                        const percentage = (arr1, arr2) => {
+                            let arrOne = [];
+                            let arrTwo = [];
+                            arrOne.push(currentValue.innerHTML.split(0));
+
+                            arrTwo.push(currentValue.innerHTML.split(2));
+                            // currentValue.innerHTML.split(2) = arrTwo;
+                            // console.log(currentValue.innerHTML);
+                            // return (a / b) * 100;
+                            return arrOne / arrTwo;
+                        };
+                        percentage();
+                    };
+                });
+            });
+        </script>
+    </body>
+
+    </html>

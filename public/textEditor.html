@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CUSTOM-CSS-FILE-LINK -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Text Editor </title>
+    <style>
+        .my_4 {
+            margin: 24px 0;
+        }
+
+        select {
+            padding: 20px 19px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="min_vh_100 d_flex align_items_center justify_content_center">
+        <div class="text_center mw_540">
+            <h1 class="mb_5 fs_1 fw_normal black_400">Text Editor</h1>
+            <div class="shadow_1 p_5">
+                <h1 id="resultBox">This is simple text.</h1>
+                <form action="" class="w-100">
+                    <select data-value="color" id="colors_section" class="w_100 d_flex my_4">
+                        <option value="Select color" hidden selected>Select color</option>
+                        <option value="red">red</option>
+                        <option value="green">green</option>
+                        <option value="blue">blue</option>
+                        <option value="orange">orange</option>
+                        <option value="khaki">khaki</option>
+                    </select>
+                    <select data-value="fontSize" id="fontSize" class="w_100 d_flex my_4">
+                        <option value="Select font size" hidden selected>Select font size</option>
+                        <option value="16px">16px</option>
+                        <option value="20px">20px</option>
+                        <option value="26px">26px</option>
+                        <option value="36px">36px</option>
+                        <option value="45px">45px</option>
+                        <option value="65px">65px</option>
+                        <option value="75px">75px</option>
+                        <option value="95px">95px</option>
+                    </select>
+                    <select data-value="fontWeight" id="fontWeight" class="w_100 d_flex my_4">
+                        <option value="Select font Weight" hidden selected>Select font Weight</option>
+                        <option value="100">100</option>
+                        <option value="200">200</option>
+                        <option value="300">300</option>
+                        <option value="400">400</option>
+                        <option value="500">500</option>
+                        <option value="600">600</option>
+                        <option value="900">900</option>
+                    </select>
+                    <select data-value="textDecoration" id="textDecoration" class="w_100 d_flex my_4">
+                        <option value="Select text Decoration" hidden selected>Select text Decoration</option>
+                        <option value="overline">overline</option>
+                        <option value="line-through">line-through</option>
+                        <option value="underline">underline</option>
+                        <option value="wavy">wavy</option>
+                        <option value="dashed">dashed</option>
+                        <option value="dotted">dotted</option>
+                        <option value="double">double</option>
+                        <option value="none">none</option>
+                    </select>
+                    <select data-value="textAlign" id="textAlign" class="w_100 d_flex my_4">
+                        <option value="Select text Align" hidden selected>Select text Align</option>
+                        <option value="right">right</option>
+                        <option value="left">left</option>
+                        <option value="center">center</option>
+                        <option value="justify">justify</option>
+
+                    </select>
+                    <select data-value="fontFamily" id="fontFamily" class="w_100 d_flex my_4">
+                        <option value="Select text Align" hidden selected>Select font Family</option>
+                        <option value="Elephant">Elephant</option>
+                        <option value="Ebrima">Ebrima</option>
+                        <option value="Terminal">Terminal</option>
+                    </select>
+                    <button type="reset" class="btn button_filled color_white">Reset</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <script>
+        const reset = document.querySelector("[type=reset]");
+        const selection = document.querySelectorAll("[data-value]");
+        const resultBox = document.querySelector("#resultBox");
+        selection.forEach((option) => {
+            option.addEventListener("change", (e) => {
+                resultBox.style[option.dataset.value] = e.target.value;
+            });
+            reset.addEventListener("click", (e) => {
+                console.log(e)
+                resultBox.style[option.dataset.value] = null;
+            });
+        });
+    </script>
+</body>
+
+</html>

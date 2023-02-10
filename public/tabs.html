@@ -1,0 +1,122 @@
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- CUSTOM-CSS-FILE-LINK -->
+        <link rel="stylesheet" href="./assets/css/style.css">
+        <title>Tabs</title>
+        <style>
+            .me_3 {
+                margin-right: 16px;
+            }
+
+            .tab_heading {
+                border-bottom: 2px solid #8d8d8d87;
+            }
+
+            .tab_heading button {
+                cursor: pointer;
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 19px;
+                color: #000000;
+                background: transparent;
+                border: none;
+            }
+
+            .tab_heading button.active::after {
+                content: "";
+                left: 0;
+                bottom: -6%;
+                position: absolute;
+                background: blue;
+                width: 100%;
+                height: 2px;
+            }
+
+            .py_2 {
+                padding-top: 8px;
+                padding-bottom: 8px;
+            }
+
+            .pt_3 {
+                padding-top: 16px;
+            }
+
+            .pb_1 {
+                padding-bottom: 8px;
+            }
+
+            [data-shown="false"] {
+                display: none;
+                /* visibility: hidden; */
+            }
+
+            [data-shown="true"] {
+                display: block;
+                /* visibility: visible; */
+            }
+        </style>
+    </head>
+
+    <body>
+        <section class="min_vh_100 d_flex align_items_center justify_content_center">
+            <div class="text_center mw_540">
+                <h1 class="mb_5 fs_1 fw_normal black_400">Tabs</h1>
+                <div class="shadow_1 p_5">
+                    <div class="d_flex flex_column">
+                        <div class="tab_heading d_flex">
+                            <button data-tab-id="1" class="pb_2 black_400 me_3 position_relative active">Tab1</button>
+                            <button data-tab-id="2" class="pb_2 black_400 me_3 position_relative">Tab2</button>
+                            <button data-tab-id="3" class="pb_2 black_400 me_3 position_relative">Tab3</button>
+                        </div>
+                        <div class="tab_content text_left pt_3">
+                            <div data-discription-id="1" data-shown="true" class="tab_box">
+                                <h1>Tab 1</h1>
+                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis perspiciatis
+                                    impedit consequatur modi odit voluptatum cupiditate nulla obcaecati. Nam modi
+                                    praesentium consectetur repudiandae vel, excepturi eaque dignissimos vero
+                                    consequuntur fuga!</p>
+                            </div>
+                            <div data-discription-id="2" data-shown="false" class="tab_box ">
+                                <h1>Tab 2</h1>
+                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis perspiciatis
+                                    impedit consequatur modi odit voluptatum cupiditate nulla obcaecati. Nam modi
+                                    praesentium consectetur repudiandae vel, excepturi eaque dignissimos vero
+                                    consequuntur fuga!</p>
+                            </div>
+                            <div data-discription-id="3" data-shown="false" class="tab_box ">
+                                <h1>Tab 3</h1>
+                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis perspiciatis
+                                    impedit consequatur modi odit voluptatum cupiditate nulla obcaecati. Nam modi
+                                    praesentium consectetur repudiandae vel, excepturi eaque dignissimos vero
+                                    consequuntur fuga!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script>
+            const tabs = document.querySelectorAll('[data-tab-id]');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const activeTab = document.querySelector('button.active');
+                    activeTab.classList.remove('active');
+                    tab.classList.add('active');
+                    const activeDescription = document.querySelector("[data-shown=true]");
+                    activeDescription.dataset.shown = false;
+                    const description = document.querySelector(
+                        `[data-discription-id="${tab.dataset.tabId}"]`);
+                    description.dataset.shown = 'true';
+                });
+            })
+        </script>
+    </body>
+
+    </html>
