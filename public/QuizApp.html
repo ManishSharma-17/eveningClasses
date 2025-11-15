@@ -1,0 +1,215 @@
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- CUSTOM-CSS-FILE-LINK -->
+        <link rel="stylesheet" href="./assets/css/style.css">
+        <title>Quiz App </title>
+        <style>
+            .my_4 {
+                margin: 24px 0;
+            }
+
+            .ms_3 {
+                margin-left: 16px;
+            }
+
+            .border_none {
+                border: none;
+            }
+
+            .outline_none {
+                outline: none;
+            }
+
+            .me_3 {
+                margin-right: 16px;
+            }
+
+            .inputField:hover {
+                border-color: var(--light_blue);
+            }
+
+            .inputField span svg path {
+                fill: var(--gray);
+            }
+
+            .inputField:hover span svg path {
+                fill: var(--light_blue);
+            }
+
+            .inputField:not(:last-child) {
+                margin-top: 24px;
+                margin-bottom: 24px;
+            }
+
+            .fw_500 {
+                font-weight: 500;
+            }
+
+            .inputField.my_answere {
+                border-color: var(--light_blue);
+            }
+
+            .inputField.my_answere span svg path {
+                fill: green;
+            }
+
+            ul {
+                /* Set "my-sec-counter" to 0 */
+                counter-reset: my-sec-counter;
+            }
+
+            li::before {
+                /* Increment "my-sec-counter" by 1 */
+                counter-increment: my-sec-counter;
+                content: "Q. "counter(my-sec-counter) " ";
+            }
+
+            .ms_2 {
+                margin-left: 16px;
+            }
+
+            form>div.d_flex>label {
+                padding: 12px 40px 12px 20px;
+            }
+
+            span svg path {
+                fill: gray;
+            }
+
+            /* input[type="radio"] {
+                position: absolute;
+            } */
+
+            input[type="radio"]:checked+span svg path {
+                fill: var(--light_blue);
+            }
+
+            input[type="radio"]:checked {
+                outline: 2px solid var(--light_blue) !important;
+
+            }
+
+            input[type="radio"] {
+                opacity: 0;
+                display: none;
+                /* width: 100%;
+                height: 100%; */
+                left: 0;
+                top: 0;
+            }
+
+            .options_outline {
+                padding: 18px 18px;
+                border: 2px solid var(--off_white);
+                border-radius: 5px;
+                margin-top: 8px;
+                margin-bottom: 8px;
+                position: relative;
+            }
+
+            .options_outline:hover {
+                border: 2px solid var(--light_blue);
+            }
+
+            button:disabled {
+                opacity: .6;
+                pointer-events: none;
+            }
+        </style>
+    </head>
+
+    <body>
+        <section class="min_vh_100 d_flex align_items_center justify_content_center">
+            <div class="text_center mw_540">
+                <h1 class="mb_5 fs_1 fw_normal black_400">Quiz App</h1>
+                <div id="taskContainer" class="shadow_1 p_5 text_left">
+                    <ul class="mb_5">
+                        <li class="fw_500">Accumsan tincidunt ornare adipiscing gravida pharetra,
+                            adipiscing?</li>
+                    </ul>
+                    <form id="options" action="" class="w_100 mb_4">
+                        <label id="option" for="option-1" class="w_100 d_flex align_items_center options_outline">
+                            <input type="radio" id="option-1" name="options">
+                            <span class="me_3 d_flex">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M10 0C4.486 0 0 4.486 0 10C0 15.514 4.486 20 10 20C15.514 20 20 15.514 20 10C20 4.486 15.514 0 10 0ZM10 18C5.589 18 2 14.411 2 10C2 5.589 5.589 2 10 2C14.411 2 18 5.589 18 10C18 14.411 14.411 18 10 18Z"
+                                        fill="black" />
+                                    <path
+                                        d="M7.99909 11.587L5.70009 9.29197L4.28809 10.708L8.00109 14.413L14.7071 7.70697L13.2931 6.29297L7.99909 11.587Z"
+                                        fill="black" />
+                                </svg>
+                            </span> Option-1
+                        </label>
+                        <label id="option" for="option-2" class="w_100 d_flex align_items_center options_outline">
+                            <input type="radio" id="option-2" name="options">
+                            <span class="me_3 d_flex">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M10 0C4.486 0 0 4.486 0 10C0 15.514 4.486 20 10 20C15.514 20 20 15.514 20 10C20 4.486 15.514 0 10 0ZM10 18C5.589 18 2 14.411 2 10C2 5.589 5.589 2 10 2C14.411 2 18 5.589 18 10C18 14.411 14.411 18 10 18Z"
+                                        fill="black" />
+                                    <path
+                                        d="M7.99909 11.587L5.70009 9.29197L4.28809 10.708L8.00109 14.413L14.7071 7.70697L13.2931 6.29297L7.99909 11.587Z"
+                                        fill="black" />
+                                </svg>
+                            </span> Option-2
+                        </label>
+                        <label id="option" for="option-3" class="w_100 d_flex align_items_center options_outline">
+                            <input type="radio" id="option-3" name="options">
+                            <span class="me_3 d_flex">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M10 0C4.486 0 0 4.486 0 10C0 15.514 4.486 20 10 20C15.514 20 20 15.514 20 10C20 4.486 15.514 0 10 0ZM10 18C5.589 18 2 14.411 2 10C2 5.589 5.589 2 10 2C14.411 2 18 5.589 18 10C18 14.411 14.411 18 10 18Z"
+                                        fill="black" />
+                                    <path
+                                        d="M7.99909 11.587L5.70009 9.29197L4.28809 10.708L8.00109 14.413L14.7071 7.70697L13.2931 6.29297L7.99909 11.587Z"
+                                        fill="black" />
+                                </svg>
+                            </span> Option-3
+                        </label>
+                        <label id="option" for="option-4" class="w_100 d_flex align_items_center options_outline">
+                            <input type="radio" id="option-4" name="options">
+                            <span class="me_3 d_flex">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M10 0C4.486 0 0 4.486 0 10C0 15.514 4.486 20 10 20C15.514 20 20 15.514 20 10C20 4.486 15.514 0 10 0ZM10 18C5.589 18 2 14.411 2 10C2 5.589 5.589 2 10 2C14.411 2 18 5.589 18 10C18 14.411 14.411 18 10 18Z"
+                                        fill="black" />
+                                    <path
+                                        d="M7.99909 11.587L5.70009 9.29197L4.28809 10.708L8.00109 14.413L14.7071 7.70697L13.2931 6.29297L7.99909 11.587Z"
+                                        fill="black" />
+                                </svg>
+                            </span> Option-4
+                        </label>
+                    </form>
+                    <button id="nextBtn" type="submit" disabled
+                        class="button_filled border_priamry color_white btn">Next</button>
+                    <button class="button_outlined btn ms_2">Previous</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="d_none min_vh_100 d_flex align_items_center justify_content_center">
+            <div class="text_center mw_540">
+                <h1 class="mb_5 fs_1 fw_normal black_400">Quiz App</h1>
+                <div id="taskContainer" class="shadow_1 p_5 text_center">
+                    <img src="./assets/images/icons/win_image.png" alt="win_image">
+                    <p class="fs_1 my_4">0/10</p>
+                    <p class="fs_2 my_4">Your Score</p>
+                    <button class="button_filled border_priamry color_white btn mb_5">Take quiz again</button>
+                </div>
+            </div>
+        </section>
+
+        <script src="./assets/js/quizApp.js"></script>
+    </body>
+
+    </html>

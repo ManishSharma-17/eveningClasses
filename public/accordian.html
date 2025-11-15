@@ -1,0 +1,115 @@
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- CUSTOM-CSS-FILE-LINK -->
+        <link rel="stylesheet" href="./assets/css/style.css">
+        <title>Accordian </title>
+        <style>
+            * {
+                transition: all 300ms linear !important;
+            }
+
+            .my_4 {
+                margin: 24px 0;
+            }
+
+            .br_5 {
+                border-radius: 5px;
+            }
+
+            .p_3 {
+                padding: 16px;
+            }
+
+            .pt_0 {
+                padding-top: 0;
+            }
+        </style>
+    </head>
+
+    <body>
+        <section class="min_vh_100 d_flex align_items_center justify_content_center">
+            <div class="text_center mw_540">
+                <h1 class="mb_5 fs_1 fw_normal black_400">Accordian</h1>
+                <div class="shadow_1 p_5">
+                    <div id="accordian" class="accordianContainer d_flex flex_column text_left active">
+                        <div id="accordianHead" class="accordianHead d_flex br_5 p_5 justify_content_between align_items_center 
+                            border_normal">
+                            <p class="accordianHeading">Group</p>
+                            <img src="./assets/images/icons/arrow_icon.png" alt="arrow_icon" class="arrow_icon">
+                        </div>
+                        <p class="text_gray  pt_0 accDiscription ">Nibh dictum nulla morbi ornare. Varius sit
+                            at eget
+                            nunc. Nibh
+                            dictum
+                            nulla
+                            morbi ornare.
+                            Varius sit at eget nunc. Nibh dictum nulla morbi ornare. Varius sit at eget nunc.
+                        </p>
+                    </div>
+                    <div id="accordian" class="accordianContainer d_flex flex_column text_left ">
+                        <div id="accordianHead" class="accordianHead d_flex br_5 p_5 justify_content_between align_items_center 
+                            border_normal">
+                            <p class="accordianHeading">Group</p>
+                            <img src="./assets/images/icons/arrow_icon.png" alt="arrow_icon">
+                        </div>
+                        <p class="text_gray  pt_0 accDiscription ">Nibh dictum nulla morbi ornare. Varius sit
+                            at eget
+                            nunc. Nibh
+                            dictum
+                            nulla
+                            morbi ornare.
+                            Varius sit at eget nunc. Nibh dictum nulla morbi ornare. Varius sit at eget nunc.
+                        </p>
+                    </div>
+                    <div id="accordian" class="accordianContainer d_flex flex_column text_left ">
+                        <div id="accordianHead" class="accordianHead d_flex br_5 p_5 justify_content_between align_items_center 
+                            border_normal">
+                            <p class="accordianHeading">Group</p>
+                            <img src="./assets/images/icons/arrow_icon.png" alt="arrow_icon">
+                        </div>
+                        <p class="text_gray  pt_0 accDiscription ">Nibh dictum nulla morbi ornare. Varius sit
+                            at eget
+                            nunc. Nibh
+                            dictum
+                            nulla
+                            morbi ornare.
+                            Varius sit at eget nunc. Nibh dictum nulla morbi ornare. Varius sit at eget nunc.
+                        </p>
+                    </div>
+                    <div id="accordian" class="accordianContainer d_flex flex_column text_left ">
+                        <div id="accordianHead" class="accordianHead d_flex br_5 p_5 justify_content_between align_items_center 
+                            border_normal">
+                            <p class="accordianHeading">Group</p>
+                            <img src="./assets/images/icons/arrow_icon.png" alt="arrow_icon">
+                        </div>
+                        <p class="text_gray  pt_0 accDiscription ">Nibh dictum nulla morbi ornare. Varius sit
+                            at eget
+                            nunc. Nibh
+                            dictum
+                            nulla
+                            morbi ornare.
+                            Varius sit at eget nunc. Nibh dictum nulla morbi ornare. Varius sit at eget nunc.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script>
+            const accordianHead = document.querySelectorAll("#accordianHead");
+
+            accordianHead.forEach((accItems) => {
+                accItems.addEventListener("click", (e) => {
+                    const remove = document.querySelector("#accordian.active");
+                    accItems.parentElement.classList.toggle('active')
+                    remove && remove.classList.remove("active");
+                });
+            });
+        </script>
+    </body>
+
+    </html>
